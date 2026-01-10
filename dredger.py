@@ -3,8 +3,12 @@ import time
 import json
 import os
 import subprocess
+import warnings 
 from bs4 import BeautifulSoup
 from langdetect import detect, DetectorFactory
+
+# Prevent the "XMLParsedAsHTMLWarning"
+warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
 
 # --- CONFIGURATION ---
 # Uses Environment Variables to match your Docker Documentation
